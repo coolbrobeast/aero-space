@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frutiger Hangout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/frutiger.css" />
+</head>
+<body>
+  <!-- Splash / Login -->
+  <div id="splash-screen">
+    <div class="splash-bg"></div>
+    <div class="splash-bubbles" id="splash-bubbles"></div>
+    <div class="splash-content">
+      <div class="aero-window splash-window">
+        <div class="aero-titlebar">
+          <div class="aero-titlebar-shine"></div>
+          <span class="aero-titlebar-icon">✦</span>
+          <span class="aero-titlebar-text">Frutiger Hangout — Welcome</span>
+        </div>
+        <div class="aero-window-body splash-body">
+          <h1 class="splash-title">Frutiger Hangout</h1>
+          <p class="splash-subtitle">The future we were promised ✦</p>
+          <label class="aero-label">Your Webiie Name</label>
+          <input type="text" class="aero-input" id="player-name" maxlength="20" placeholder="Enter your name..." />
+          <label class="aero-label">Status Message</label>
+          <input type="text" class="aero-input" id="player-status" maxlength="60" placeholder="What are you up to?" value="Chilling in paradise~" />
+          <button id="enter-world-btn" class="aero-btn primary glow">Enter World ✦</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Click to Play -->
+  <div id="click-to-play" class="hidden">
+    <div class="aero-window click-play-window">
+      <div class="aero-titlebar">
+        <div class="aero-titlebar-shine"></div>
+        <span class="aero-titlebar-icon">🖱️</span>
+        <span class="aero-titlebar-text">Ready to Hang Out</span>
+      </div>
+      <div class="aero-window-body click-play-body">
+        <div class="click-play-icon">🫧</div>
+        <p>Click anywhere to play</p>
+        <span class="click-play-sub">Mouse look · WASD move · ESC pause</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pause Menu -->
+  <div id="pause-menu" class="hidden">
+    <div class="pause-overlay"></div>
+    <div class="aero-window pause-window">
+      <div class="aero-titlebar">
+        <div class="aero-titlebar-shine"></div>
+        <span class="aero-titlebar-icon">⏸</span>
+        <span class="aero-titlebar-text">Paused</span>
+      </div>
+      <div class="aero-window-body pause-body">
+        <button class="aero-btn primary glow" id="pause-resume">▶ Resume</button>
+        <button class="aero-btn" id="pause-customize">✦ Customize Webiie</button>
+        <p class="pause-hint">Press ESC or click Resume to continue</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Character Customizer -->
+  <div id="customizer-panel" class="aero-window hidden">
+    <div class="aero-titlebar">
+      <div class="aero-titlebar-shine"></div>
+      <span class="aero-titlebar-icon">✦</span>
+      <span class="aero-titlebar-text">Webiie Customizer</span>
+      <button class="aero-win-btn" id="customizer-close">✕</button>
+    </div>
+    <div class="aero-window-body customizer-body">
+      <div class="customizer-preview" id="customizer-preview"></div>
+      <div class="customizer-options">
+        <label class="aero-label">Body Color</label>
+        <div class="color-swatches" id="color-swatches"></div>
+        <input type="color" class="aero-color" id="custom-color" value="#4fc3f7" />
+        <label class="aero-label">Transparency <span id="opacity-val">75%</span></label>
+        <input type="range" class="aero-slider" id="opacity-slider" min="30" max="100" value="75" />
+        <label class="aero-label">Hat / Accessory</label>
+        <div class="hat-options" id="hat-options"></div>
+        <label class="aero-label">Status Message</label>
+        <input type="text" class="aero-input" id="custom-status" maxlength="60" />
+        <button class="aero-btn primary glow" id="apply-customizer">Apply Changes ✦</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arcade Menu -->
+  <div id="arcade-panel" class="aero-window hidden">
+    <div class="aero-titlebar arcade-titlebar">
+      <div class="aero-titlebar-shine"></div>
+      <span class="aero-titlebar-icon">🎮</span>
+      <span class="aero-titlebar-text">Frutiger Arcade</span>
+      <button class="aero-win-btn" id="arcade-close">✕</button>
+    </div>
+    <div class="aero-window-body arcade-body">
+      <div class="arcade-icon-big" id="arcade-icon">✦</div>
+      <h2 id="arcade-title">Minigame</h2>
+      <p id="arcade-desc" class="arcade-desc"></p>
+      <div class="arcade-buttons">
+        <button class="aero-btn primary glow" id="arcade-solo">🕹️ Solo Play</button>
+        <button class="aero-btn multi-btn" id="arcade-multi">👥 Multiplayer</button>
+        <button class="aero-btn hidden" id="arcade-start">▶ Start Now (Host)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WIM Messenger -->
+  <div id="wim-messenger" class="hidden">
+    <div class="aero-window wim-window" id="wim-main">
+      <div class="aero-titlebar">
+        <div class="aero-titlebar-shine"></div>
+        <span class="aero-titlebar-icon wim-badge">WIM</span>
+        <span class="aero-titlebar-text">Web Instant Messenger</span>
+        <button class="aero-win-btn" id="wim-minimize">—</button>
+      </div>
+      <div class="aero-window-body wim-body">
+        <div class="wim-profile">
+          <div class="wim-avatar" id="wim-my-avatar"></div>
+          <div class="wim-profile-info">
+            <div class="wim-my-name" id="wim-my-name">Webiie</div>
+            <div class="wim-my-status" id="wim-my-status">Chilling~</div>
+          </div>
+        </div>
+        <div class="wim-actions">
+          <button class="aero-btn small" id="btn-customizer">✦ Customize</button>
+          <button class="aero-btn small" id="btn-emote-wave">👋 Wave</button>
+          <button class="aero-btn small" id="btn-emote-dance">💃 Dance</button>
+          <button class="aero-btn small" id="btn-float">🫧 Float</button>
+        </div>
+        <div class="wim-section-title">Online Friends (<span id="online-count">0</span>)</div>
+        <div class="wim-friends-list" id="friends-list"></div>
+      </div>
+    </div>
+
+    <div class="aero-window wim-window hidden" id="wim-chat-window">
+      <div class="aero-titlebar">
+        <div class="aero-titlebar-shine"></div>
+        <span class="aero-titlebar-icon">💬</span>
+        <span class="aero-titlebar-text" id="chat-with-name">Chat</span>
+        <button class="aero-win-btn" id="chat-close">✕</button>
+      </div>
+      <div class="wim-chat-messages" id="chat-messages"></div>
+      <div class="wim-chat-input-row">
+        <input type="text" class="aero-input" id="chat-input" placeholder="Send a message..." maxlength="200" />
+        <button class="aero-btn small primary" id="chat-send">Send</button>
+        <button class="aero-btn small nudge-btn" id="chat-nudge">⚡ Nudge</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- World Chat -->
+  <div id="world-chat" class="hidden">
+    <div class="aero-window world-chat-window">
+      <div class="world-chat-log" id="world-chat-log"></div>
+      <div class="world-chat-input-row">
+        <input type="text" class="aero-input" id="world-chat-input" placeholder="Say something to everyone..." maxlength="200" />
+        <button class="aero-btn small primary" id="world-chat-send">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <div class="aero-hud-badge">✦ Frutiger Hangout</div>
+      <div class="hud-controls-hint">Click play · WASD · Mouse look · Shift run · Space jump · F arcade · Tab map · ESC pause</div>
+    </div>
+    <div class="hud-bottom-left">
+      <div class="aero-hud-badge location" id="location-badge">Frutiger Aqua · Resort Beach</div>
+      <div class="aero-hud-badge orbs">✦ Orbs: <span id="orb-count">0</span></div>
+    </div>
+    <div class="hud-bottom-center">
+      <div id="interact-prompt" class="aero-interact hidden">[F] Interact</div>
+    </div>
+    <div id="nudge-flash" class="nudge-flash hidden"></div>
+  </div>
+
+  <!-- Minimap -->
+  <div id="minimap" class="aero-window hidden">
+    <div class="aero-titlebar mini">
+      <div class="aero-titlebar-shine"></div>
+      <span class="aero-titlebar-icon">🗺️</span>
+      <span class="aero-titlebar-text">World Map</span>
+    </div>
+    <canvas id="minimap-canvas" width="200" height="200"></canvas>
+  </div>
+
+  <!-- Minigame Panel -->
+  <div id="minigame-panel" class="aero-window hidden">
+    <div class="aero-titlebar">
+      <div class="aero-titlebar-shine"></div>
+      <span class="aero-titlebar-icon">🎮</span>
+      <span class="aero-titlebar-text" id="minigame-title">Minigame</span>
+      <button class="aero-win-btn" id="minigame-quit">✕</button>
+    </div>
+    <div class="aero-window-body minigame-body">
+      <div class="minigame-stats">
+        <div class="stat-pill">Score: <strong id="minigame-score">0</strong></div>
+        <div class="stat-pill">Time: <strong id="minigame-timer">0</strong>s</div>
+      </div>
+      <div id="mg-leaderboard" class="mg-leaderboard"></div>
+      <div id="minigame-hint" class="minigame-hint"></div>
+    </div>
+  </div>
+
+  <canvas id="game-canvas"></canvas>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
+
